@@ -25,7 +25,7 @@ describe("createServerClient", () => {
       getAll: vi.fn().mockReturnValue([]),
       set: vi.fn(),
     };
-    vi.mocked(cookies).mockResolvedValue(mockCookieStore as any);
+    vi.mocked(cookies).mockResolvedValue(mockCookieStore as unknown as Awaited<ReturnType<typeof cookies>>);
 
     const { createServerClient } = await import("@/lib/supabase/server");
     const client = await createServerClient();
@@ -40,7 +40,7 @@ describe("createServerClient", () => {
       getAll: vi.fn().mockReturnValue([]),
       set: vi.fn(),
     };
-    vi.mocked(cookies).mockResolvedValue(mockCookieStore as any);
+    vi.mocked(cookies).mockResolvedValue(mockCookieStore as unknown as Awaited<ReturnType<typeof cookies>>);
 
     const { createServerClient } = await import("@/lib/supabase/server");
     const client1 = await createServerClient();
@@ -71,7 +71,7 @@ describe("createServerClient", () => {
       getAll: vi.fn().mockReturnValue(mockCookies),
       set: vi.fn(),
     };
-    vi.mocked(cookies).mockResolvedValue(mockCookieStore as any);
+    vi.mocked(cookies).mockResolvedValue(mockCookieStore as unknown as Awaited<ReturnType<typeof cookies>>);
 
     const { createServerClient } = await import("@/lib/supabase/server");
     const client = await createServerClient();
